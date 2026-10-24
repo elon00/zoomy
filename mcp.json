@@ -1,10 +1,33 @@
-{
-  "name": "zoomy",
-  "ticker": "ZOOM",
-  "category": "Launchpads_Memes",
+﻿{
+  "name": "zoomy-mcp",
+  "version": "1.0.0",
+  "description": "Zoomy Model Context Protocol Server",
   "tools": [
-    { "name": "query_conway_state", "description": "Fetches current cellular automaton lattice" },
-    { "name": "execute_x402_settlement", "description": "Executes HTTP 402 micro-settlement" },
-    { "name": "fetch_quicknode_rpc", "description": "Queries QuickNode multi-chain endpoint" }
+    {
+      "name": "audit_protocol_invariants",
+      "description": "Audit system configuration and execution against core Zoomy invariants",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "context": { "type": "string" },
+          "evaluation_metric": { "type": "string" }
+        },
+        "required": ["context"]
+      }
+    },
+    {
+      "name": "disburse_micro_grant",
+      "description": "Trigger an automated micro-escrow disbursement for verified protocol operations",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string" },
+          "recipient": { "type": "string" },
+          "amount_wei": { "type": "string" },
+          "proof_hash": { "type": "string" }
+        },
+        "required": ["category", "recipient", "amount_wei"]
+      }
+    }
   ]
 }
